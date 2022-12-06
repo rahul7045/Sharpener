@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded' , function(){
 })
 
 function showNewUserOnScreen(myobj){
-   const child = `<li id =${myobj.description}>Category :-${myobj.category} Amount:-${myobj.amount} Description:-${myobj.description} <button onClick = deleteItem("${myobj.description}")>Delete</button><button onClick = editItem('${myobj.description}','${myobj.category}','${myobj.amount}')>Edit</button></li>`
+   const child = `<li  id =${myobj.description}>Category :-${myobj.category} Amount:-${myobj.amount} Description:-${myobj.description} <button type="button" class="btn btn-danger btn-sm m-2 float-right" onClick = deleteItem("${myobj.description}")>Delete</button><button type="button" class="btn btn-primary m-2 float-right btn-sm" onClick = editItem('${myobj.description}','${myobj.category}','${myobj.amount}')>Edit</button></li>`
    userList.innerHTML = userList.innerHTML + child
 }
 
