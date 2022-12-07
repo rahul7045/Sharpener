@@ -60,25 +60,25 @@ function createPost(post){
 //     })
 // })
 
-function deletePost(){
+function lasteditedUserTime(){
     return new Promise((resolve , reject)=>{
-        setTimeout(()=>{
-            posts.pop();
-
-            const  error = false;
-            if(!error){
-                resolve()
-            }else{
-                reject("Array is empty now")
-            }
-        } , 2000)
+         setTimeout(()=>{
+           
+           const error = false;
+           if(!error){
+               resolve(lastedited = new Date().getTime())
+           }else{
+               reject('Error : Something went wrong');
+           }
+         } , 1000)
     })
 }
 
+let promise1 = createPost({title:"Post Three" , body :"This is Post Four"});
+let promise2 =  lasteditedUserTime();
 
+Promise.all([promise1 , promise2])
+.then(value => console.log(value));
 
-const promise1 = new Promise((resolve , reject)=>{
-    setTimeout(resolve , 1000 , console.log(lastedited));
-})
 
 
