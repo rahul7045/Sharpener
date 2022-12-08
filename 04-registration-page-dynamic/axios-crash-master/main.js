@@ -138,7 +138,7 @@ const axiosInstance = axios.create({
   baseURL : 'https://jsonplaceholder.typicode.com'
 })
 
-axiosInstance.get('/comments').then(res => showOutput(res))
+// axiosInstance.get('/comments').then(res => showOutput(res))
 
 // Show output in browser
 function showOutput(res) {
