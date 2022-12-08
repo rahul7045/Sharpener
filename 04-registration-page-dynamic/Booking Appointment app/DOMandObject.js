@@ -41,7 +41,10 @@ myForm.addEventListener('submit', onSubmit);
 
 // new methods
 window.addEventListener("DOMContentLoaded" , ()=>{
+      getDataFromApi(); 
+})
 
+function getDataFromApi(){
    axios.get('https://crudcrud.com/api/d1bbd2c384154daea062892e2b0e9cf6/appointmentData')
    .then(res=>{
       console.log(res.data);
@@ -51,12 +54,10 @@ window.addEventListener("DOMContentLoaded" , ()=>{
       }
    })
    .catch(err =>console.log(err))
-
-   
-})
+}
 
 function showNewUserOnScreen(myInfo){
-   const childNode = `<li id=${myInfo.email}> ${myInfo.name} - ${myInfo.email} <button onClick= deleteUser("${myInfo.email}") >Delete</button>
+   const childNode = `<li id=${myInfo.email}> ${myInfo.name} - ${myInfo.email} <button onClick= deleteUser("${myInfo._id}") >Delete</button>
    <button onclick=editUserDetails('${myInfo.email}','${myInfo.name}')>Edit User </button>
 
    </li>`
@@ -82,23 +83,36 @@ function onSubmit(e) {
 
       axios.post('https://crudcrud.com/api/d1bbd2c384154daea062892e2b0e9cf6/appointmentData',myobj)
       .then(data =>{
+         userList.innerHTML =""
+      getDataFromApi();
          console.log(data)
       })
       .catch(err => console.log(err))
 
       //localStorage.setItem(`userdetail${emailEle.value}`, JSON.stringify(myobj))
-      showNewUserOnScreen(myobj);
+      //showNewUserOnScreen(myobj);
+      
       nameEle.value = "";
       emailEle.value = "";
    }
 }
 
-function deleteUser(email){
-   localStorage.removeItem(`userdetail${email}`);
+function deleteUser(id){
 
-   const childNode = document.getElementById(email);
+   //localStorage.removeItem(`userdetail${email}`);
+   axios.delete(`https://crudcrud.com/api/d1bbd2c384154daea062892e2b0e9cf6/appointmentData/${id}`)
+   .then(res =>{
+       userList.innerHTML =""
+       getDataFromApi();
+     
+   })
+   .catch(err => console.log(err))
 
-   userList.removeChild(childNode);
+  // const childNode = document.getElementById(id);
+
+  // userList.removeChild(childNode);
+  
+   
 
 }
 
