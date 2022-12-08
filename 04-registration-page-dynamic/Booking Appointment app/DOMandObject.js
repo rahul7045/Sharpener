@@ -58,7 +58,7 @@ function getDataFromApi(){
 
 function showNewUserOnScreen(myInfo){
    const childNode = `<li id=${myInfo.email}> ${myInfo.name} - ${myInfo.email} <button onClick= deleteUser("${myInfo._id}") >Delete</button>
-   <button onclick=editUserDetails('${myInfo.email}','${myInfo.name}')>Edit User </button>
+   <button onclick=editUserDetails('${myInfo.email}','${myInfo.name}','${myInfo._id}')>Edit User </button>
 
    </li>`
 
@@ -116,11 +116,12 @@ function deleteUser(id){
 
 }
 
-function editUserDetails(email , name){
+function editUserDetails(email , name , id){
    nameEle.value = name;
    emailEle.value =email;
+   
 
-   deleteUser(email);
+   deleteUser(id);
 
 
 }
