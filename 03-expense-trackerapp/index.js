@@ -14,13 +14,17 @@ window.addEventListener('DOMContentLoaded' , function(){
     getDataFromApi();
 })
 
-function getDataFromApi(){
-    axios.get('https://crudcrud.com/api/cdbd5c3d2497440bbbf022cd7f58cabd/expensetracker')
-    .then(res =>{
+async function getDataFromApi(){
+    try{
+        const res = await axios.get('https://crudcrud.com/api/bf9792954fdf42eaa82ad98f2f634a0f/expensetracker')
         for(var i=0;i<res.data.length;i++){
             showNewUserOnScreen(res.data[i]);
         }
-    })
+    }
+    catch(err){
+        console.log(err);
+    }
+
 }
 
 function showNewUserOnScreen(myobj){
@@ -28,7 +32,7 @@ function showNewUserOnScreen(myobj){
    userList.innerHTML = userList.innerHTML + child
 }
 
-function onSubmit(e){
+async function onSubmit(e){
     e.preventDefault();
     if(amountEl.value == "" && descriptionEl.value == "" &&  categoryEl.value == "" ){
         msg.innerHTML = "Please Enter Amount , Description and category";
@@ -41,13 +45,21 @@ function onSubmit(e){
             description : descriptionEl.value,
             category : categoryEl.value
         }
+        try{
+         const res = await axios.post('https://crudcrud.com/api/bf9792954fdf42eaa82ad98f2f634a0f/expensetracker',myobj)
+         userList.innerHTML ="";
+         getDataFromApi();
+        }
+        catch(err){
+            console.log(err)
+        }
 
-        axios.post('https://crudcrud.com/api/cdbd5c3d2497440bbbf022cd7f58cabd/expensetracker',myobj)
-        .then(res =>{
-            userList.innerHTML ="";
-            getDataFromApi();
-        })
-        .catch(err =>console.log(err))
+        // axios.post('https://crudcrud.com/api/bf9792954fdf42eaa82ad98f2f634a0f/expensetracker',myobj)
+        // .then(res =>{
+        //     userList.innerHTML ="";
+        //     getDataFromApi();
+        // })
+        // .catch(err =>console.log(err))
        // localStorage.setItem(`user${descriptionEl.value}` , JSON.stringify(myobj) );
        // showNewUserOnScreen(myobj)
        amountEl.value="";
@@ -56,17 +68,27 @@ function onSubmit(e){
     
 }
 
-function deleteItem(id){
+async function  deleteItem(id){
     //localStorage.removeItem(`user${description}`);
     //const child = document.getElementById(description);
 
     //userList.removeChild(child);
-    axios.delete(`https://crudcrud.com/api/cdbd5c3d2497440bbbf022cd7f58cabd/expensetracker/${id}`)
-        .then(res =>{
-            userList.innerHTML ="";
-            getDataFromApi();
-        })
-        .catch(err =>console.log(err))
+    try{
+        const res = await axios.delete(`https://crudcrud.com/api/bf9792954fdf42eaa82ad98f2f634a0f/expensetracker/${id}`)
+        userList.innerHTML ='';
+        getDataFromApi();
+    }
+    catch (err) {
+        console.log(err);
+    }
+   // const res = await axios.delete(`https://crudcrud.com/api/bf9792954fdf42eaa82ad98f2f634a0f/expensetracker/${id}`)
+        // .then(res =>{
+        //     userList.innerHTML ="";
+        //     getDataFromApi();
+        // })
+        // .catch(err =>console.log(err))
+       // userList.innerHTML ='';
+       // getDataFromApi();
     
 }
 
