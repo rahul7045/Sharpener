@@ -14,9 +14,11 @@ const App=() =>{
 
 
  const addExpenseHandler=(expenseData)=>{
-  console.log(expenseData);
   data1.push(expenseData);
   setData(data1);
+
+  console.log(data)
+
  }
 
 
