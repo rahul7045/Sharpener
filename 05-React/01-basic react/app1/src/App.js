@@ -1,4 +1,5 @@
-import ExpensesItem from "./components/Expenses/ExpensesItem";
+import Expenses from "./components/Expenses/Expenses";
+import ExpenseForm from "./components/ExpenseForm/ExpenseForm";
 const App=() =>{
 
   const data = [
@@ -8,20 +9,13 @@ const App=() =>{
     {id:'e4' ,title:'Home Insurance' , amount : 500 , date : new Date(2000,5,19),location:'Delhi' }
 
   ]
-  // let innerdata =""
-  // const ele = data.forEach(info =>{
-  //   innerdata = innerdata + `<ExpensesItem title={info.title} amount={info.amount} date={info.date} />`
-  // })
+ 
+
 
   return (
     <>
-      <h1>Lets get Started</h1>
-      <ExpensesItem title={data[0].title} amount={data[0].amount} date={data[0].date} location={data[0].location}/> 
-      <ExpensesItem title={data[1].title} amount={data[1].amount} date={data[1].date} location={data[1].location} /> 
-      <ExpensesItem title={data[2].title} amount={data[2].amount} date={data[2].date} location={data[2].location} /> 
-      <ExpensesItem title={data[3].title} amount={data[3].amount} date={data[3].date} location={data[3].location} /> 
-
-     {/* {innerdata} */}
+      <ExpenseForm />
+      <Expenses data={data} />
     </>
 
   );

@@ -25,7 +25,7 @@ const ExpensesItem=(props)=>{
         <ExpenseDetail title={title} amount={amount} location={props.location} />
         <button onClick={changeExpenseHandler}>Change Expenses</button>
         <button onClick ={changeTitleHandler}>Change Title</button>
-        <button onClick ={deleteExpenseHandler}>Delete</button>
+        {/* <button onClick ={deleteExpenseHandler}>Delete</button> */}
 
     </Card>
     );
