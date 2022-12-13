@@ -1,18 +1,19 @@
 import './ExpensesItem.css'
 import ExpenseDate from './ExpenseDate';
 import ExpenseDetail from './ExpenseDetail';
+import Card from '../UI/Card'
 
-function ExpensesItem(props){
+const ExpensesItem=(props)=>{
     // const expenseDate =new Date();
     // const expenseTitle = 'Car Insurance';
     // const expenseAmount = 294.67
     // const locationOfExpenditure = 'Mumbai'
    
     return(
-     <div className='expense-item'>
-     <ExpenseDate date={props.date} />
-    <ExpenseDetail title={props.title} amount={props.amount} location={props.location} />s
-    </div>
+     <Card className='expense-item'>
+        <ExpenseDate date={props.date} />
+        <ExpenseDetail title={props.title} amount={props.amount} location={props.location} />s
+    </Card>
     );
 }
 

@@ -1,5 +1,5 @@
-import ExpensesItem from "./components/ExpensesItem";
-function App() {
+import ExpensesItem from "./components/Expenses/ExpensesItem";
+const App=() =>{
 
   const data = [
     {id:'e1' ,title:'Car Insurance' , amount : 250 , date : new Date(2021,2,28) ,location:'Mumbai' },
