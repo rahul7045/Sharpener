@@ -9,6 +9,16 @@ const ExpenseForm =()=>{
     //     enteredAmount:'',
     //     enteredDate:''
     // })
+    const submitHandler=(event)=>{
+        event.preventDefault();
+        const newExpense ={
+            title : enteredTitle,
+            amount : enteredAmount,
+           date :enteredDate,
+        }
+        console.log(newExpense);
+    }
+
     const titleChangeHandler =(event)=>{
         setEnteredAmount(event.target.value);
         // setUserInput({
@@ -50,7 +60,7 @@ const ExpenseForm =()=>{
                </div>
             </div>
             <div className='new-expense__actions'>
-                <button type='submit'>Add Expenses</button>
+                <button onClick={submitHandler} type='submit'>Add Expenses</button>
             </div>
         </form>
     )
