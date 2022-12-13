@@ -1,31 +1,47 @@
+
 import React,{useState} from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/ExpenseForm/NewExpense";
+const DUMMY_EXPENSES = [
+  {
+    id: 'e1',
+    title: 'Toilet Paper',
+    amount: 94.12,
+    date: new Date(2020, 7, 14),
+  },
+  { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
+  {
+    id: 'e3',
+    title: 'Car Insurance',
+    amount: 294.67,
+    date: new Date(2021, 2, 28),
+  },
+  {
+    id: 'e4',
+    title: 'New Desk (Wooden)',
+    amount: 450,
+    date: new Date(2021, 5, 12),
+  },
+];
 const App=() =>{
-
-  const data1 = [
-    {id:'e1' ,title:'Car Insurance' , amount : 250 , date : new Date(2021,2,28) ,location:'Mumbai' },
-    {id:'e2' ,title:'Bike Insurance' , amount : 150 , date : new Date(2022,3,28) ,location:'Gurgaon'},
-    {id:'e3' ,title:'Truck Insurance' , amount : 350 , date : new Date(2019,5,20),location:'Bangalore' },
-    {id:'e4' ,title:'Home Insurance' , amount : 500 , date : new Date(2000,5,19),location:'Delhi' }
-
-  ]
-  const[data , setData] = useState(data1);
-
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
  const addExpenseHandler=(expenseData)=>{
-  data1.push(expenseData);
-  setData(data1);
+  console.log(expenseData)
+ // dummy_expenses.push(expenseData);
+ // setData(dummy_expenses);
+ setExpenses((prevExpenses) => {
+  return [expenseData, ...prevExpenses];
+});
 
-  console.log(data)
-
+ console.log(expenses)
  }
 
 
   return (
     <>
       <NewExpense  onAddNewExpense={addExpenseHandler} />
-      <Expenses data={data} />
+      <Expenses data={expenses} />
     </>
 
   );
