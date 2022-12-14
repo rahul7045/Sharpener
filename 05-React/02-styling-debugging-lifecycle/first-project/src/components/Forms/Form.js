@@ -1,28 +1,32 @@
-import React, { useState } from "react";
+import React, { useState , useRef } from "react";
 
 const Form = (props) => {
-    const[name,setName] = useState('');
-    const[age,setAge] = useState('');
+   // const[name,setName] = useState('');
+   // const[age,setAge] = useState('');
+   const nameInputRef =useRef();
+   const ageInputRef =useRef();
+
 
     const submitHandler =(event)=>{
        event.preventDefault();
        const newUser = {
-        name : name,
-        age : age
+        name : nameInputRef.current.value,
+        age : ageInputRef.current.value
        }
        console.log(newUser);
        props.onAddUser(newUser);
-      
-       setName('');
-       setAge('');
+       nameInputRef.current.value=""
+       ageInputRef.current.value=""
+      //  setName('');
+      //  setAge('');
     }
 
-    const nameChangeHandler=(event)=>{
-     setName(event.target.value)
-    }
-    const ageChangeHandler=(event)=>{
-      setAge(event.target.value)
-    }
+    // const nameChangeHandler=(event)=>{
+    //  setName(event.target.value)
+    // }
+    // const ageChangeHandler=(event)=>{
+    //   setAge(event.target.value)
+    // }
   return (
     <form onSubmit={submitHandler} className="mb-3" >
         <h2 className="w-60 text-center mt-3">Add User</h2>
@@ -34,8 +38,9 @@ const Form = (props) => {
           type="text"
           className="form-control"
           id="name"
-          value={name}
-          onChange={nameChangeHandler}
+          // value={name}
+          // onChange={nameChangeHandler}
+          ref={nameInputRef}
         />
       </div>
       <div className="mb-3">
@@ -46,8 +51,9 @@ const Form = (props) => {
           type="number"
           className="form-control"
           id="age"
-          value={age}
-          onChange={ageChangeHandler}
+          // value={age}
+          // onChange={ageChangeHandler}
+          ref={ageInputRef}
         />
       </div>
       <button type="submit" className="btn btn-primary w-100 ">
