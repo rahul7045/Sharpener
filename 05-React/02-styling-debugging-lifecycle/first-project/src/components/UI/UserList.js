@@ -5,7 +5,7 @@ const UserList = (props) => {
   return (
     <div className="d-grid gap-3">
       {props.items.map((item) => (
-        <UserItem id={item.id} name={item.name} age={item.age} />
+        <UserItem id={item.id} name={item.name} age={item.age} college={item.college} />
       ))}
     </div>
   );

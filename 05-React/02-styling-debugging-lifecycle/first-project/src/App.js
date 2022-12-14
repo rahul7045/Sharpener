@@ -4,9 +4,9 @@ import UserList from './components/UI/UserList';
 import Form from './components/Forms/Form';
 import Wrapper from './components/Helpers/Wrapper';
 const dummy_info =[
-  {name : "Rahul" , age : 22},
-  {name : "Raja" , age : 18},
-  {name : "Sarthak" , age : 12}
+  {name : "Rahul" , age : 22 , college:"Fr CRCE"},
+  {name : "Raja" , age : 18 , college:"BMC College"},
+  {name : "Sarthak" , age : 12, college:"Gokuldham School"}
 
 ]
 const App=()=> {

@@ -5,17 +5,21 @@ const Form = (props) => {
    // const[age,setAge] = useState('');
    const nameInputRef =useRef();
    const ageInputRef =useRef();
+   const collegeInputRef =useRef();
+
 
 
     const submitHandler =(event)=>{
        event.preventDefault();
        const newUser = {
         name : nameInputRef.current.value,
-        age : ageInputRef.current.value
+        age : ageInputRef.current.value,
+        college : collegeInputRef.current.value
        }
        console.log(newUser);
        props.onAddUser(newUser);
        nameInputRef.current.value=""
+       collegeInputRef.current.value=""
        ageInputRef.current.value=""
       //  setName('');
       //  setAge('');
@@ -54,6 +58,19 @@ const Form = (props) => {
           // value={age}
           // onChange={ageChangeHandler}
           ref={ageInputRef}
+        />
+      </div>
+      <div className="mb-3">
+        <label htmlFor="college" className="form-label">
+          College Name
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="college"
+          // value={age}
+          // onChange={ageChangeHandler}
+          ref={collegeInputRef}
         />
       </div>
       <button type="submit" className="btn btn-primary w-100 ">
