@@ -1,0 +1,11 @@
+
+.card{
+    width: 70%;
+    margin-left: 15%;
+    border-radius: 10px;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    top : 40%;
+    z-index: 10;
+}
