@@ -8,7 +8,7 @@ const HeaderCartButton = (props) => {
   return (
     <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary header-button"
             style={{ padding: 10 + "px" +" " +70 + "px",
                      borderRadius: 25 + "px" ,
                      

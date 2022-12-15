@@ -1,0 +1,15 @@
+.mealitem{
+    background-color: white;
+    color: black;
+}
+
+.item-name{
+    font-weight: bold;
+}
+.item-desc{
+    font-style: italic;
+}
+.item-price{
+    color: brown;
+    font-weight: bold;
+}

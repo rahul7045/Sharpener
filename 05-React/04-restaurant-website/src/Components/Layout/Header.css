@@ -1,12 +1,10 @@
-.card{
-    position: relative;
-}
+
 .image-size{
     min-width: 100%;
     max-height: 50vh;
 }
 
-button{
+.header-button{
     float: right;
     color:brown;
     padding: 10px 70px;
