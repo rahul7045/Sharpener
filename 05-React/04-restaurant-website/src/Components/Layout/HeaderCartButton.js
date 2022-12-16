@@ -13,6 +13,7 @@ const HeaderCartButton = (props) => {
                      borderRadius: 25 + "px" ,
                      
                     }}
+            onClick={props.onClick}        
           >
             <img src={cartIcon} />
             Your Cart
