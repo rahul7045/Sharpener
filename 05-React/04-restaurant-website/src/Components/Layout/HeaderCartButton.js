@@ -1,10 +1,19 @@
-import React from 'react'
+import React ,{useContext} from 'react'
+import CartContext from '../../store/cart-context';
 import cartIcon from './cartIconwhite.png'
 import "./Header.css";
 
 
 
 const HeaderCartButton = (props) => {
+  const cartCtx = useContext(CartContext);
+
+  const numberOfCartItems = cartCtx.items.reduce((curr, item)=>{
+    return curr+ item.amount
+  },0)
+
+
+
   return (
     <button
             type="button"
@@ -17,7 +26,7 @@ const HeaderCartButton = (props) => {
           >
             <img src={cartIcon} />
             Your Cart
-            <span className="cartItemsNumber">1</span>
+            <span className="cartItemsNumber">{numberOfCartItems}</span>
           </button>
   )
 }
