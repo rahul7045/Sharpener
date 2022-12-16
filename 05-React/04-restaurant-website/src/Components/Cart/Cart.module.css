@@ -42,3 +42,19 @@
   background-color: #8a2b06;
   color: white;
 }
+
+.amount-number-cartItem{
+  
+  padding-left: 20px;
+  font-weight: bold;
+}
+
+.increment-decrement{
+  float: right;
+  border: 1px solid black;
+  
+}
+
+.cart-item-margin{
+padding:  5px;
+}
