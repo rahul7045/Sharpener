@@ -1,11 +1,19 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import './CartItem.css'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/esm/Col';
 import Row from 'react-bootstrap/esm/Row';
+import CartContext from '../../store/cart-context';
 
 const CartItem = (props) => {
+  const cartCtx = useContext(CartContext)
+  const deleteItem=()=>{
+    const deleteItem={
+      id:parseInt(props.prod.id)
+    }
+    cartCtx.removeItem(deleteItem)
+  }
   return (
     <div className='cartitem-main'>
         <div className='cartitem-img'>
@@ -14,8 +22,8 @@ const CartItem = (props) => {
         </div>
         <div className='cartitem-price'>{props.prod.price}</div>
         <div className='cartitem-button'>
-            <span className='cartitem-quantity'>2</span>
-            <button>Delete</button>
+            <span className='cartitem-quantity'>{props.prod.quantity}</span>
+            <button onClick={deleteItem} >Delete</button>
         </div>
     </div>
   )
