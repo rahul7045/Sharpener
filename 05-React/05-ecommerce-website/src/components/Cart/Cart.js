@@ -1,12 +1,15 @@
 import React from "react";
 import Container from "react-bootstrap/esm/Container";
-import ProductItem from "./ProductItem";
+import CartItem from "./CartItem";
 import Row from "react-bootstrap/esm/Row";
+import './Cart.css'
+import CloseButton from 'react-bootstrap/CloseButton';
 
-const Product = () => {
-  const dummy_products = [
+
+export const Cart = (props) => {
+  const dummy_cart = [
     {
-      id : 1,
+      id:1,
       title: "Colors",
 
       price: 100,
@@ -16,7 +19,7 @@ const Product = () => {
     },
 
     {
-      id :2,
+      id:2,
       title: "Black and white Colors",
 
       price: 50,
@@ -26,7 +29,7 @@ const Product = () => {
     },
 
     {
-      id :3 ,
+      id:3,
       title: "Yellow and Black Colors",
 
       price: 70,
@@ -46,12 +49,19 @@ const Product = () => {
     },
   ];
   return (
-    <Container>
-      <Row>
-        {dummy_products.map(item=><ProductItem key={item.id} prod={item} />)}
-      </Row>
-    </Container>
+    <Container className="cart">
+       <CloseButton onClick={props.onHideCart} />
+      <div className="cart-main">
+        <div className="cart-item">ITEM</div>
+        <div className="cart-price">PRICE</div>
+        <div className="cart-quantity">QUANTITY</div>
+      </div>
+   
+      {dummy_cart.map(item=><CartItem key={item.id} prod={item} />)}
+
+  
+  </Container>
   );
 };
 
-export default Product;
+export default Cart
