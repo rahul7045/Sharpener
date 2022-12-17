@@ -19,8 +19,8 @@ function App() {
     <CartProvider>
       <NavBar onShowCart={showCartHandler} />
       {cartIsShow && <Cart onHideCart={hideCartHandler} />}
-      <Card />
-      <Product />
+      {/* <Card />
+      <Product /> */}
     </CartProvider>
   );
 }

@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import './Card.css'
 const Card = () => {
   return (
-    <Container fluid>
+    <Container className='padding-top-generics' fluid>
     <Row>
       <Col className='the-generics'>The Generics</Col>
     </Row>
