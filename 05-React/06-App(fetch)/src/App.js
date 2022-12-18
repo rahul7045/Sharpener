@@ -2,6 +2,7 @@ import React,{useState , useEffect, useCallback} from 'react';
 
 import MoviesList from './components/MoviesList';
 import './App.css';
+import Forms from './components/Forms';
 
 function App() {
   const[movies, setMovies] = useState([])
@@ -10,8 +11,6 @@ function App() {
 
   
   let timeInterval;
-
-  
   
   const fetchMovieHandler = useCallback( async()=>{
     console.log("fetching")
@@ -68,6 +67,9 @@ function App() {
 
   return (
     <React.Fragment>
+      <section>
+        <Forms />
+      </section>
       <section>
         <button onClick={fetchMovieHandler}>Fetch Movies</button>
       </section>
