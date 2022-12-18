@@ -1,4 +1,4 @@
-import React,{useState , useEffect} from 'react';
+import React,{useState , useEffect, useCallback} from 'react';
 
 import MoviesList from './components/MoviesList';
 import './App.css';
@@ -8,16 +8,13 @@ function App() {
   const[isLoading , setIsLoading] = useState(false)
   const [error , setError] = useState(null)
 
-  useEffect(()=>{
-    fetchMovieHandler()
-  } , [])
+  
   let timeInterval;
 
-  if(error){
-   timeInterval = setTimeout(fetchMovieHandler , 5000)
-  }
   
-  async function fetchMovieHandler(){
+  
+  const fetchMovieHandler = useCallback( async()=>{
+    console.log("fetching")
     setIsLoading(true);
     setError(null)
     try{
@@ -37,11 +34,21 @@ function App() {
       }
     })
     setMovies(transformedMovies)
+    console.log("fetching completed")
     }catch(error){
        setError(error.message)
     }
   setIsLoading(false)
-  }
+  } ,[]
+  )
+
+  useEffect(()=>{
+    fetchMovieHandler()
+  } , [fetchMovieHandler])
+
+  if(error){
+    timeInterval = setTimeout(fetchMovieHandler , 5000)
+   }
 
   function cancelFetch(){
     clearInterval(timeInterval)
