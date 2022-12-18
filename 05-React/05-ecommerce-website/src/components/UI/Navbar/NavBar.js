@@ -9,6 +9,7 @@ import {BrowserRouter as Router , Switch , Route , Link} from 'react-router-dom'
 import About from '../../../pages/About';
 import Product from '../../Products/Product';
 import Card from '../Card/Card';
+import Home from '../../../pages/Home';
 
 function NavBar(props) {
   const cartCtx = useContext(CartContext);
@@ -23,7 +24,7 @@ function NavBar(props) {
           <Container>
             <Navbar.Brand href="#home">Navbar</Navbar.Brand>
             <Nav className="me-auto item-center">
-              <Nav.Link as={Link} to={"/store"}>Home</Nav.Link>
+              <Nav.Link as={Link} to={"/home"}>Home</Nav.Link>
               <Nav.Link as={Link} to={"/about"}>About</Nav.Link>
               <Nav.Link as={Link} to={"/store"}>Store</Nav.Link>
             </Nav>
@@ -40,10 +41,14 @@ function NavBar(props) {
               <Card />
               <About />
             </Route>
+            <Route path="/home">
+              <Card />
+              <Home />
+            </Route>
             <Route path="/">
               <Card />
-              <Product />
-            </Route>
+              <Home />
+            </Route>  
           </Switch>
         </div>
       </Router> 
