@@ -1,6 +1,6 @@
 import React ,{useState}from 'react'
 
- const Forms = () => {
+ const Forms = (props) => {
 
 
     const[titleItem , setTitleItem] = useState("");
@@ -12,9 +12,12 @@ import React ,{useState}from 'react'
       const newMovie ={
         title : titleItem,
         desc : descItem,
-        date : new Date(dateItem)
+        date : new Date(dateItem),
+        id : Math.random()
       }
       console.log(newMovie)
+      props.onAddMovie(newMovie)
+
       setTitleItem("");
       setDescItem("");
       setDateItem("")
