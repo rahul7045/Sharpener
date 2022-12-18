@@ -10,6 +10,7 @@ import About from '../../../pages/About';
 import Product from '../../Products/Product';
 import Card from '../Card/Card';
 import Home from '../../../pages/Home';
+import Contact from '../../../pages/Contact';
 
 function NavBar(props) {
   const cartCtx = useContext(CartContext);
@@ -27,6 +28,8 @@ function NavBar(props) {
               <Nav.Link as={Link} to={"/home"}>Home</Nav.Link>
               <Nav.Link as={Link} to={"/about"}>About</Nav.Link>
               <Nav.Link as={Link} to={"/store"}>Store</Nav.Link>
+              <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link>
+
             </Nav>
             <Button onClick={props.onShowCart}  variant="primary">Cart<span>{numberOfCartItems}</span></Button>
           </Container>
@@ -44,6 +47,10 @@ function NavBar(props) {
             <Route path="/home">
               <Card />
               <Home />
+            </Route>
+            <Route path="/contact">
+              <Card />
+              <Contact/>
             </Route>
             <Route path="/">
               <Card />
