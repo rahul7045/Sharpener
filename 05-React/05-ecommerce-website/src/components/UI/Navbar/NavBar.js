@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button'
 import './NavBar.css'
 import CartContext from '../../../store/cart-context';
-import {BrowserRouter as Router , Switch , Route , Link , useHistory} from 'react-router-dom'
+import {BrowserRouter as Router , Switch , Route , Link , useHistory, Redirect   } from 'react-router-dom'
 import About from '../../../pages/About';
 import Product from '../../Products/Product';
 import Card from '../Card/Card';
@@ -23,8 +23,10 @@ function NavBar(props) {
   const history = useHistory();
   const isLoggedIn = cartCtx.isLoggedIn;
   const logoutHandler=()=>{
+    history.push("/")
+    // history.replace("/")
     cartCtx.logout()
-    history.replace("/home")
+    // history.replace("/login")
     console.log("logout done")
   }
 
@@ -36,17 +38,20 @@ function NavBar(props) {
             <Nav className="me-auto item-center">
               <Nav.Link as={Link} to={"/home"}>Home</Nav.Link>
               <Nav.Link as={Link} to={"/about"}>About</Nav.Link>
-              <Nav.Link as={Link} to={"/store"}>Store</Nav.Link>
+              { isLoggedIn && <Nav.Link as={Link} to={"/store"}>Store</Nav.Link>}
               <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link>
               {!isLoggedIn && <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>}
               {isLoggedIn && <Nav.Link onClick={logoutHandler}>Logout</Nav.Link>}
-
+             
             </Nav>
             <Button onClick={props.onShowCart}  variant="primary">Cart<span>{numberOfCartItems}</span></Button>
           </Container>
         </Navbar>
         <div>
           <Switch>
+            <Route path="/" exact>
+              <Redirect to="/home" />
+            </Route>
           <Route path="/store" exact>
               <Card />
               <Product />
@@ -55,7 +60,7 @@ function NavBar(props) {
               <Card />
               <About />
             </Route>
-            <Route path="/home">
+            <Route path="/home" exact>
               <Card />
               <Home />
             </Route>
@@ -63,7 +68,7 @@ function NavBar(props) {
               <Card />
               <Contact/>
             </Route>
-            <Route path="/login">
+            <Route path="/login" exact>
               <Login />
             </Route>
             <Route path="/" exact>
