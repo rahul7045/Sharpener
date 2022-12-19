@@ -2,8 +2,10 @@ import React from "react";
 import Container from "react-bootstrap/esm/Container";
 import ProductItem from "./ProductItem";
 import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
+import {Link} from 'react-router-dom'
 
-const Product = () => {
+const Product = (props) => {
   const dummy_products = [
     {
       id : 1,

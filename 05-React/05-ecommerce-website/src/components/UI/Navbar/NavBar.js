@@ -11,6 +11,7 @@ import Product from '../../Products/Product';
 import Card from '../Card/Card';
 import Home from '../../../pages/Home';
 import Contact from '../../../pages/Contact';
+import ProductPage from '../../Products/ProductPage';
 
 function NavBar(props) {
   const cartCtx = useContext(CartContext);
@@ -36,7 +37,7 @@ function NavBar(props) {
         </Navbar>
         <div>
           <Switch>
-          <Route path="/store">
+          <Route path="/store" exact>
               <Card />
               <Product />
             </Route>
@@ -52,9 +53,12 @@ function NavBar(props) {
               <Card />
               <Contact/>
             </Route>
-            <Route path="/">
+            <Route path="/" exact>
               <Card />
               <Home />
+            </Route>  
+            <Route path="/store/:storeid">
+              <ProductPage key={props.product.id} products={props.product} />
             </Route>  
           </Switch>
         </div>

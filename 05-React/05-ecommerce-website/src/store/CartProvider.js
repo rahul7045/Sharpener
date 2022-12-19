@@ -24,7 +24,6 @@ const cartReducer =(state , action)=>{
                 if (item.id == action.item.id) {
                   return { ...item, quantity: action.item.quantity + 1 };
                 }
-          
                 return item;
               });
               const newTotalAmount = state.totalAmount + action.item.price;

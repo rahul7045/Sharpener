@@ -3,6 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/esm/Col';
 import CartContext from '../../store/cart-context';
+import {Link} from 'react-router-dom'
+
 
  const ProductItem = (props) => {
    const cartCtx = useContext(CartContext)
@@ -22,7 +24,7 @@ import CartContext from '../../store/cart-context';
     <Col lg={6} className ="margin-auto">
     <Card style={{ width: '18rem' }}>
     <Card.Title>{props.prod.title}</Card.Title>
-    <Card.Img variant="top" src={props.prod.imageUrl} />
+    <Link to={`/store/${props.prod.id}`}><Card.Img variant="top" src={props.prod.imageUrl} /></Link>
     <Card.Body>
     <Card.Text>{props.prod.price}</Card.Text>
       <Button onClick={submitHandler} variant="primary">Buy Now</Button>
