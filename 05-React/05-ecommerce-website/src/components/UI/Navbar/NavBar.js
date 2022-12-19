@@ -5,13 +5,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import Button from 'react-bootstrap/Button'
 import './NavBar.css'
 import CartContext from '../../../store/cart-context';
-import {BrowserRouter as Router , Switch , Route , Link} from 'react-router-dom'
+import {BrowserRouter as Router , Switch , Route , Link , useHistory} from 'react-router-dom'
 import About from '../../../pages/About';
 import Product from '../../Products/Product';
 import Card from '../Card/Card';
 import Home from '../../../pages/Home';
 import Contact from '../../../pages/Contact';
 import ProductPage from '../../Products/ProductPage';
+import  Login  from '../../../pages/Login';
 
 function NavBar(props) {
   const cartCtx = useContext(CartContext);
@@ -19,6 +20,13 @@ function NavBar(props) {
   const numberOfCartItems = cartCtx.items.reduce((curr, item)=>{
     return curr + item.quantity
   },0)
+  const history = useHistory();
+  const isLoggedIn = cartCtx.isLoggedIn;
+  const logoutHandler=()=>{
+    cartCtx.logout()
+    history.replace("/home")
+    console.log("logout done")
+  }
 
   return (
      <Router>
@@ -30,6 +38,8 @@ function NavBar(props) {
               <Nav.Link as={Link} to={"/about"}>About</Nav.Link>
               <Nav.Link as={Link} to={"/store"}>Store</Nav.Link>
               <Nav.Link as={Link} to={"/contact"}>Contact</Nav.Link>
+              {!isLoggedIn && <Nav.Link as={Link} to={"/login"}>Login</Nav.Link>}
+              {isLoggedIn && <Nav.Link onClick={logoutHandler}>Logout</Nav.Link>}
 
             </Nav>
             <Button onClick={props.onShowCart}  variant="primary">Cart<span>{numberOfCartItems}</span></Button>
@@ -52,6 +62,9 @@ function NavBar(props) {
             <Route path="/contact">
               <Card />
               <Contact/>
+            </Route>
+            <Route path="/login">
+              <Login />
             </Route>
             <Route path="/" exact>
               <Card />

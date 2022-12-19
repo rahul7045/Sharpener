@@ -1,5 +1,6 @@
-import React, { useReducer } from "react";
+import React, { useReducer , useState } from "react";
 import CartContext from "./cart-context";
+import { useHistory } from "react-router-dom";
 
 const defaultCartState ={
     items : [],
@@ -55,11 +56,36 @@ const CartProvider =(props)=>{
   dispatchcartAction({type:"REMOVE" , item : item})
     }
 
+    //login and auuthentication 
+
+    const initialToken = localStorage.getItem('token');
+    const[token , setToken] = useState(initialToken);
+    const userLoggedIn = !!token;
+    const history = useHistory()
+
+
+    const loginHandler=(token)=>{
+        setToken(token)
+        localStorage.setItem('token' , token)
+        history.replace('/store')
+
+    }
+
+    const logoutHandler=()=>{
+        setToken(null);
+        localStorage.removeItem('token')
+    }
+
     const cartContext = {
         items: cartState.items ,
         totalAmount: cartState.totalAmount,
         addItem : addItemHandler,
-        removeItem : removeItemHandler
+        removeItem : removeItemHandler,
+        token : token,
+        login : loginHandler,
+        logout : logoutHandler,
+        isLoggedIn : userLoggedIn
+
     }
  return(
     <CartContext.Provider value={cartContext}>
