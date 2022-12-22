@@ -45,11 +45,13 @@ import { useHistory } from 'react-router-dom';
         if(isLogin){
             console.log("Login Completed")
             //console.log(data.idToken)
-
+            localStorage.setItem('email' ,enteredEmail )
             authCtx.login(data.idToken)
             history.replace('/store')
+            alert("Log In Successful")
         }else{
              console.log("Sign up Completed")
+             alert("Sign Up Successful")
              
         }
      }).catch(err=>{

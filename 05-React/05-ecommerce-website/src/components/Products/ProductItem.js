@@ -6,6 +6,8 @@ import CartContext from '../../store/cart-context';
 import {Link} from 'react-router-dom'
 
 
+
+
  const ProductItem = (props) => {
    const cartCtx = useContext(CartContext)
   const submitHandler=()=>{
@@ -14,7 +16,7 @@ import {Link} from 'react-router-dom'
       title : props.prod.title,
       price : parseInt(props.prod.price),
       imageUrl :props.prod.imageUrl,
-      quantity : parseInt(1)
+      quantity : parseInt(props.prod.quantity)
   }
   cartCtx.addItem(newItem)
   console.log(newItem)
@@ -26,7 +28,7 @@ import {Link} from 'react-router-dom'
     <Card.Title>{props.prod.title}</Card.Title>
     <Link to={`/store/${props.prod.id}`}><Card.Img variant="top" src={props.prod.imageUrl} /></Link>
     <Card.Body>
-    <Card.Text>{props.prod.price}</Card.Text>
+    <Card.Text>{`Rs ${props.prod.price}`}</Card.Text>
       <Button onClick={submitHandler} variant="primary">Buy Now</Button>
     </Card.Body>
   </Card>

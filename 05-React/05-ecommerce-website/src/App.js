@@ -59,6 +59,8 @@ function App() {
     setCartIsShow(false)
   }
 
+ 
+
   return (
     <CartProvider>
       {cartIsShow && <Cart onHideCart={hideCartHandler} />}

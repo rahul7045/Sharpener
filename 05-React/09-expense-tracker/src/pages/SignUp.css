@@ -1,0 +1,14 @@
+.signUpbackground{
+   background-color: brown;
+    
+}
+
+.form-main{
+   
+    text-align: center;
+    background-color: azure;
+    width: 50%;
+    height: 50%;
+    margin:  auto;
+    padding-top: 25%;
+}

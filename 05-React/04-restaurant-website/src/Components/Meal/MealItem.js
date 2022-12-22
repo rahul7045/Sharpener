@@ -16,6 +16,7 @@ const MealItem = (props) => {
    }
    cartCtx.addItem(newItem)
    console.log(newItem)
+   inputAmountRef.current.value =""
   }
   return (
     <div className='flex-container'>

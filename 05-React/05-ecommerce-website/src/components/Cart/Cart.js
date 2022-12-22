@@ -1,10 +1,11 @@
-import React,{useContext} from "react";
+import React,{useContext , useEffect} from "react";
 import Container from "react-bootstrap/esm/Container";
 import CartItem from "./CartItem";
-import Row from "react-bootstrap/esm/Row";
 import './Cart.css'
 import CloseButton from 'react-bootstrap/CloseButton';
 import CartContext from "../../store/cart-context";
+
+
 
 
 export const Cart = (props) => {
@@ -50,6 +51,9 @@ export const Cart = (props) => {
     },
   ];
   const cartCtx = useContext(CartContext)
+ 
+ 
+
   return (
     <Container className="cart">
        <CloseButton onClick={props.onHideCart} />
@@ -58,10 +62,10 @@ export const Cart = (props) => {
         <div className="cart-price">PRICE</div>
         <div className="cart-quantity">QUANTITY</div>
       </div>
-   
+     {/* {console.log(cartCtx.items)} */}
       {cartCtx.items.map(item=><CartItem key={item.id} prod={item} />)}
 
-      <div>{`Total : ${cartCtx.totalAmount}`}</div>
+      <div style={{"fontWeight" : "bold"}}>{`Total : ${cartCtx.totalAmount}`}</div>
 
   
   </Container>

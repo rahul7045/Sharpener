@@ -10,7 +10,9 @@ const CartItem = (props) => {
   const cartCtx = useContext(CartContext)
   const deleteItem=()=>{
     const deleteItem={
-      id:parseInt(props.prod.id)
+      id:parseInt(props.prod.id),
+      quantity : parseInt(props.prod.quantity),
+      price : parseInt(props.prod.price)
     }
     cartCtx.removeItem(deleteItem)
   }
