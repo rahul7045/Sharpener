@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
+import Home from "./Home";
 import "./SignUp.css";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const inputEmailRef = useRef();
   const inputPasswordRef = useRef();
   const inputConfirmPasswordRef = useRef();
   const [login, setLogin] = useState(true);
+  const navigate = useNavigate();
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -49,6 +52,7 @@ const SignUp = () => {
         alert("SignUp Successful")
       }else{
         alert("Login Successful")
+        navigate("/home")
       }
     }else{
       const data = await res.json;
@@ -85,7 +89,11 @@ const SignUp = () => {
           </>
         )}
 
+
         <button type="submit">{login ? "Login" : "Sign Up"}</button>
+        {
+          login && <a href="">Forgot Password</a>
+        }
         <div className="signup-login" onClick={accountHandler}>
           {login ? "Click here to Sign Up" : "click here to Login"}
         </div>
