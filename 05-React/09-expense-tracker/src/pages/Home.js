@@ -1,8 +1,13 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
+import { UpdateProfile } from '../components/UpdateProfile'
+import './Home.css'
 
  const Home = () => {
-  return (
-    <h1 className='margin-auto pt-5'>Welcome To expense Tracker</h1>
+  return (<div className='main-home'>
+    <h2 className='margin-auto'>Welcome To Expense Tracker</h2>
+    <div className='profile'>Your Profile is incomplete <NavLink className="link-profile" to="/update">complete now</NavLink></div>
+    </div>
   )
 }
 
