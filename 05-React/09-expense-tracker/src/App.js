@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Route , Routes } from "react-router-dom";
 import MainNavigation from "./components/MainNavigation";
 import SignUp  from "./pages/SignUp";
@@ -6,9 +6,11 @@ import Home from "./pages/Home";
 import { UpdateProfile } from "./components/UpdateProfile";
 
 function App() {
+
+  
   return (
     <Fragment>
-      <MainNavigation />
+      <MainNavigation  />
        <Routes>
         <Route path="/home" element={<Home/>} />
         <Route path="/login" element={<SignUp/>} />
