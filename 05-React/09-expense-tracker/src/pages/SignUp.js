@@ -2,12 +2,13 @@ import React, { useRef, useState } from "react";
 import Home from "./Home";
 import "./SignUp.css";
 import { useNavigate } from "react-router-dom";
+import { ForgotPassword } from "../components/ForgotPassword";
 
-const SignUp = () => {
+const SignUp = (props) => {
   const inputEmailRef = useRef();
   const inputPasswordRef = useRef();
   const inputConfirmPasswordRef = useRef();
-  const [login, setLogin] = useState(true);
+  const [login, setLogin] = useState(false);
   const navigate = useNavigate();
 
   const submitHandler = async (event) => {
@@ -50,6 +51,7 @@ const SignUp = () => {
       if(!login){
         inputConfirmPasswordRef.current.value=""
         alert("SignUp Successful")
+        navigate('/login')
       }else{
         alert("Login Successful")
         navigate("/home")
@@ -68,6 +70,10 @@ const SignUp = () => {
   const accountHandler = () => {
     setLogin((prev) => !prev);
   };
+
+  const forgotPasswordHandler=()=>{
+  navigate('/forgotpassword')
+  }
   return (
     <div className="wrapper">
       <form onSubmit={submitHandler} className="form">
@@ -90,9 +96,9 @@ const SignUp = () => {
         )}
 
 
-        <button type="submit">{login ? "Login" : "Sign Up"}</button>
+        <button  type="submit">{login ? "Login" : "Sign Up"}</button>
         {
-          login && <a href="">Forgot Password</a>
+          login && <a onClick={forgotPasswordHandler} href="">Forgot Password</a>
         }
         <div className="signup-login" onClick={accountHandler}>
           {login ? "Click here to Sign Up" : "click here to Login"}
