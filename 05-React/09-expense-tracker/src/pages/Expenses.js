@@ -1,21 +1,14 @@
 import React,{useEffect, useRef, useState} from "react";
 import './Expenses.css'
-import { ExpenseItem } from "../components/ExpenseItem";
-
-const Expenses = () => {
+import ExpenseItem  from "../components/ExpenseItem";
 
 
 
-    const inputAmountRef = useRef();
-    const inputDescRef = useRef();
-    const inputCategoryRef = useRef();
-    const dummy_expenses =[];
-    const[expenses , setExpenses] = useState(dummy_expenses)
-    let arrayObject=[]
+ const Expenses = () => {
 
-    async function fetchExpenses(){
+     async function fetchExpenses(){
         try{
-
+    
             const res = await fetch(`https://expense-tracker-760b4-default-rtdb.firebaseio.com/expense-tracker.json`,
             {
                 method:'GET',
@@ -32,7 +25,7 @@ const Expenses = () => {
                 for (let key in data){
                     newdata.push({id :key ,...data[key]})
                 }
-
+    
                 setExpenses(newdata)
                
             }else{
@@ -42,6 +35,14 @@ const Expenses = () => {
             console.log(error.message)
         }
     }
+
+    const inputAmountRef = useRef();
+    const inputDescRef = useRef();
+    const inputCategoryRef = useRef();
+    const dummy_expenses =[];
+    const[expenses , setExpenses] = useState(dummy_expenses)
+
+    
 
     useEffect(()=>{
         async function fetchExpenses(){
