@@ -30,8 +30,8 @@ import { useNavigate } from 'react-router-dom'
            {userLogin && <li><NavLink to="/expenses">Expenses</NavLink></li>}
             <li><NavLink to="/about">About</NavLink></li>
             <li><NavLink to="/profile">Profile</NavLink></li>
-            <li><NavLink to="/login">Login</NavLink></li>
-            <li><NavLink onClick={logoutHandler}>Logout</NavLink></li>
+            {!userLogin && <li><NavLink to="/login">Login</NavLink></li>}
+            {userLogin &&<li><NavLink onClick={logoutHandler}>Logout</NavLink></li>}
         </ul>
     </nav>
     </div>
