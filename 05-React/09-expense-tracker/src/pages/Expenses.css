@@ -31,3 +31,15 @@
     margin: 5px 0 5px 0;
     box-sizing: border-box;
   }
+
+  .expenses-list{
+    width: 60%;
+    margin: auto;
+    list-style-type: none;
+   
+  }
+  .expenses-list span{
+    padding: 3px;
+  }
+
+  

@@ -1,4 +1,5 @@
 import React from 'react'
+import './ExpenseItem.css'
 
 
  const ExpenseItem = (props) => {
@@ -15,8 +16,9 @@ import React from 'react'
             const data = await res.json();
         
             if(res.ok){
+                
                 alert("Expense Deleted Successfully")
-                props.deleteItem(props.item.id)
+                props.deleteItem(props.item)
         
             }else{
                 throw data.error
@@ -48,11 +50,12 @@ import React from 'react'
        }
     }
 
-  return (
-    <div>
-        <li>{`${props.item.amount}  ${props.item.description}   ${props.item.category} ` } <button onClick={editHandler}>Edit</button>   <button onClick={deleteHandler}>Delete</button> </li>
-    </div>
-  )
+  return (<>
+       <li> <b>Category</b> :-{props.item.category} <b>Amount</b>:-${props.item.amount} <b>Description</b>:-{props.item.description} <button className='bg-blue' onClick={editHandler}>Edit</button> <button className='bg-red' onClick={deleteHandler}>Delete</button> </li>
+        {/* <li><span>{props.item.amount}</span>  <span>{props.item.description}</span>  <span> {props.item.category}</span> `
+        <button onClick={editHandler}>Edit</button>   <button onClick={deleteHandler}>Delete</button> </li> */}
+     </>
+  )  
 }
 
 export default ExpenseItem

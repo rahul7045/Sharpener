@@ -6,15 +6,18 @@ import Home from "./pages/Home";
 import { UpdateProfile } from "./components/UpdateProfile";
 import { ForgotPassword } from "./components/ForgotPassword";
 import Expenses from "./pages/Expenses";
+import Premium from "./components/Premium";
+import { useSelector } from "react-redux";
+import './App.css'
 
 function App() {
 
-
-
-  
+  const themeMode = useSelector((state) => state.theme.theme);
   return (
     <Fragment>
       <MainNavigation   />
+      <div className={themeMode === 'dark' ? 'dark' : ''}>
+      <Premium />
        <Routes>
         <Route path="/home" element={<Home/>} />
         <Route path="/expenses" element={<Expenses/>} />
@@ -26,6 +29,7 @@ function App() {
 
         
       </Routes> 
+      </div>
     </Fragment>
     
   );
